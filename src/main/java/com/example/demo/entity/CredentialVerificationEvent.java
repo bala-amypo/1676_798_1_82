@@ -7,11 +7,11 @@ import lombok.*;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductivityMetricRecord {
+public class CredentialVerificationEvent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int score;
+    private String status;
 }
