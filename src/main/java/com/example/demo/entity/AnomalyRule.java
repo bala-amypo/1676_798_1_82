@@ -1,24 +1,22 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
-@Table(name = "anomaly_rules")
-@Getter
-@Setter
 public class AnomalyRule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    private double thresholdValue;
     private String ruleCode;
 
-    private String description;
-    private String thresholdType;
-    private Double thresholdValue;
-    private Boolean active = true;
+    public double getThresholdValue() {
+        return thresholdValue;
+    }
+
+    public String getRuleCode() {
+        return ruleCode;
+    }
 }

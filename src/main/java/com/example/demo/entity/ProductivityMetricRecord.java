@@ -1,26 +1,34 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "productivity_metric_record")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class ProductivityMetricRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String employeeId;
+    private LocalDate date;
+    private int hoursLogged;
+    private int tasksCompleted;
+    private int meetingsAttended;
+    private double productivityScore;
 
-    @Column(nullable = false)
-    private int productivityScore;
+    @ManyToOne
+    private EmployeeProfile employee;
 
-    @Column(nullable = false)
-    private String metricDate;
+    public LocalDate getDate() { return date; }
+    public int getHoursLogged() { return hoursLogged; }
+    public int getTasksCompleted() { return tasksCompleted; }
+    public int getMeetingsAttended() { return meetingsAttended; }
+
+    public void setEmployee(EmployeeProfile employee) {
+        this.employee = employee;
+    }
+
+    public void setProductivityScore(double productivityScore) {
+        this.productivityScore = productivityScore;
+    }
 }
