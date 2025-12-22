@@ -2,7 +2,10 @@ package com.example.demo.util;
 
 public class ProductivityCalculator {
 
-    public static double calculate(double hours, int tasks) {
-        return (hours * 10) + (tasks * 5);
+    public static double calculate(int hoursWorked, int tasksCompleted) {
+        if (hoursWorked <= 0) {
+            return 0;
+        }
+        return (double) tasksCompleted / hoursWorked;
     }
 }
