@@ -1,72 +1,26 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.time.LocalDate;
-import java.time.Local                                      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-DateTime;
+import lombok.*;
 
 @Entity
-@Table(
-        name = "productivity_metric_records",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"employee_id", "date"})
-)
+@Table(name = "productivity_metric_record")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductivityMetricRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate date;
-    private Double hoursLogged;
-    private Integer tasksCompleted;
-    private Integer meetingsAttended;
-    private Double productivityScore;
+    @Column(nullable = false)
+    private String employeeId;
 
-    @ManyToOne
-    @JoinColumn(name = "employee_id")
-    private EmployeeProfile employee;
+    @Column(nullable = false)
+    private int productivityScore;
 
-    private LocalDateTime submittedAt;
-
-    @PrePersist
-    public void onSubmit() {
-        submittedAt = LocalDateTime.now();
-    }
+    @Column(nullable = false)
+    private String metricDate;
 }
