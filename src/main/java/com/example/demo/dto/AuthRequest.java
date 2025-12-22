@@ -1,9 +1,5 @@
+// AuthRequest.java
 package com.example.demo.dto;
-
-import lombok.*;
-
+import lombok.Getter; import lombok.Setter;
 @Getter @Setter
-public class AuthRequest {
-    private String username;
-    private String password;
-}
+public class AuthRequest { private String username; private String password; }
