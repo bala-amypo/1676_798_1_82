@@ -1,8 +1,11 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
+@Table(name = "user_accounts", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class UserAccount {
 
     @Id
@@ -10,27 +13,18 @@ public class UserAccount {
     private Long id;
 
     private String username;
-    private String password;
+    private String email;
+    private String passwordHash;
 
-    public UserAccount() {}
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<String> role;
 
-    public Long getId() {
-        return id;
+    private LocalDateTime createdAt;
+
+    @PrePersist
+    void created() {
+        this.createdAt = LocalDateTime.now();
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    /* getters & setters */
 }

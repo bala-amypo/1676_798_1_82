@@ -3,20 +3,18 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "anomaly_rules", uniqueConstraints = @UniqueConstraint(columnNames = "ruleCode"))
 public class AnomalyRule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private double thresholdValue;
     private String ruleCode;
+    private String description;
+    private String thresholdType;
+    private Double thresholdValue;
+    private Boolean active;
 
-    public double getThresholdValue() {
-        return thresholdValue;
-    }
-
-    public String getRuleCode() {
-        return ruleCode;
-    }
+    /* getters & setters */
 }

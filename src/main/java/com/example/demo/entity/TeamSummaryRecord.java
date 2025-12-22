@@ -2,8 +2,10 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "team_summary_records")
 public class TeamSummaryRecord {
 
     @Id
@@ -11,34 +13,12 @@ public class TeamSummaryRecord {
     private Long id;
 
     private String teamName;
-    private LocalDate date;
-    private double averageScore;
+    private LocalDate summaryDate;
+    private Double avgHoursLogged;
+    private Double avgTasksCompleted;
+    private Double avgScore;
+    private Integer anomalyCount;
+    private LocalDateTime generatedAt;
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getTeamName() {
-        return teamName;
-    }
-
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public double getAverageScore() {
-        return averageScore;
-    }
-
-    public void setAverageScore(double averageScore) {
-        this.averageScore = averageScore;
-    }
+    /* getters & setters */
 }
