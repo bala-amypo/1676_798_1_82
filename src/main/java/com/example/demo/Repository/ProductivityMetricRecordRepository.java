@@ -1,17 +1,32 @@
-package com.example.demo.repository;
+package com.example.demo.service;
 
-import com.example.demo.entity.ProductivityMetricRecord;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
+import com.example.demo.entity.*;
+import com.example.demo.util.ProductivityCalculator;
 
-public interface ProductivityMetricRecordRepository
-        extends JpaRepository<ProductivityMetricRecord, Long> {
+@Service
+public class ProductivityMetricServiceImpl {
 
-    Optional<ProductivityMetricRecord>
-    findByEmployee_IdAndDate(Long employeeId, LocalDate date);
+    public void processMetric(EmployeeProfile employee,
+                              ProductivityMetricRecord metric,
+                              AnomalyRule rule,
+                              AnomalyFlagRecord flag) {
 
-    List<ProductivityMetricRecord> findByEmployee_Id(Long employeeId);
+        double score = ProductivityCalculator.calculate(
+                metric.getHoursLogged(),
+                metric.getTasksCompleted(),
+                metric.getMeetingsAttended()
+        );
+
+        metric.setEmployee(employee);
+        metric.setProductivityScore(score);
+
+        if (score < rule.getThresholdValue()) {
+            flag.setEmployee(employee);
+            flag.setMetric(metric);
+            flag.setSeverity("HIGH");
+            flag.setDetails("Rule triggered: " + rule.getRuleCode());
+        }
+    }
 }
