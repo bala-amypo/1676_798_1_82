@@ -1,12 +1,8 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
 
 @Entity
-@Getter @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserAccount {
 
     @Id
@@ -15,4 +11,26 @@ public class UserAccount {
 
     private String username;
     private String password;
+
+    public UserAccount() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
