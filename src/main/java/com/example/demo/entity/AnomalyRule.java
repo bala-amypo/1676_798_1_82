@@ -1,20 +1,8 @@
-package com.example.demo.entity;
-
-import jakarta.persistence.*;
-
 @Entity
-@Table(name = "anomaly_rules", uniqueConstraints = @UniqueConstraint(columnNames = "ruleCode"))
+@Getter @Setter
 public class AnomalyRule {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     private Long id;
-
-    private String ruleCode;
-    private String description;
-    private String thresholdType;
-    private Double thresholdValue;
-    private Boolean active;
-
-    /* getters & setters */
+    private String ruleName;
+    private int threshold;
 }

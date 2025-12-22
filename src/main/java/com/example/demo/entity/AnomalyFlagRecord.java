@@ -1,23 +1,8 @@
-package com.example.demo.entity;
-
-import jakarta.persistence.*;
-import java.time.LocalDateTime;
-
 @Entity
-@Table(name = "anomaly_flag_records")
+@Getter @Setter
 public class AnomalyFlagRecord {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     private Long id;
-
     private Long employeeId;
-    private Long metricId;
-    private String ruleCode;
-    private String severity;
-    private String details;
-    private LocalDateTime flaggedAt;
-    private Boolean resolved = false;
-
-    /* getters & setters */
+    private String reason;
 }
