@@ -1,6 +1,15 @@
+package com.example.demo.entity;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "employee_profiles")
-@Getter @Setter
+@Getter
+@Setter
 public class EmployeeProfile {
 
     @Id
@@ -10,19 +19,17 @@ public class EmployeeProfile {
     @Column(unique = true, nullable = false)
     private String employeeId;
 
-    private String fullName;
-
     @Column(unique = true)
     private String email;
 
+    private String fullName;
     private String teamName;
     private String role;
     private Boolean active = true;
-
     private LocalDateTime createdAt;
 
     @PrePersist
-    void onCreate() {
+    public void onCreate() {
         createdAt = LocalDateTime.now();
     }
 }

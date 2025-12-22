@@ -1,9 +1,19 @@
+package com.example.demo.entity;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Entity
 @Table(
-  name = "productivity_metric_records",
-  uniqueConstraints = @UniqueConstraint(columnNames = {"employee_id", "date"})
+        name = "productivity_metric_records",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"employee_id", "date"})
 )
-@Getter @Setter
+@Getter
+@Setter
 public class ProductivityMetricRecord {
 
     @Id
@@ -23,7 +33,7 @@ public class ProductivityMetricRecord {
     private LocalDateTime submittedAt;
 
     @PrePersist
-    void onSubmit() {
+    public void onSubmit() {
         submittedAt = LocalDateTime.now();
     }
 }

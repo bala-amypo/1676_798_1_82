@@ -1,6 +1,13 @@
+package com.example.demo.entity;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "anomaly_rules")
-@Getter @Setter
+@Getter
+@Setter
 public class AnomalyRule {
 
     @Id
