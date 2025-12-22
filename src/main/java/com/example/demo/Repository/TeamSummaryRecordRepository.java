@@ -1,8 +1,7 @@
 package com.example.demo.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entity.TeamSummaryRecord;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TeamSummaryRecordRepository
-        extends JpaRepository<TeamSummaryRecord, Long> {
+public interface TeamSummaryRepository extends JpaRepository<TeamSummaryRecord, Long> {
 }

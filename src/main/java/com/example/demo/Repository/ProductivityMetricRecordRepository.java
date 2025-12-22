@@ -1,8 +1,7 @@
 package com.example.demo.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entity.ProductivityMetricRecord;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductivityMetricRecordRepository
-        extends JpaRepository<ProductivityMetricRecord, Long> {
+public interface ProductivityMetricRepository extends JpaRepository<ProductivityMetricRecord, Long> {
 }

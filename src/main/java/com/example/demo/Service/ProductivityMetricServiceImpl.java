@@ -1,23 +1,25 @@
-package com.example.demo.service.impl;
+package com.example.demo.service;
 
-import org.springframework.stereotype.Service;
-import lombok.RequiredArgsConstructor;
-
-import com.example.demo.repository.ProductivityMetricRecordRepository;
+import com.example.demo.entity.ProductivityMetricRecord;
+import com.example.demo.repository.ProductivityMetricRepository;
 import com.example.demo.util.ProductivityCalculator;
-import com.example.demo.entity.AnomalyFlagRecord;
+import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
-public class ProductivityMetricServiceImpl {
+public class ProductivityService {
 
-    private final ProductivityMetricRecordRepository repository;
+    private final ProductivityMetricRepository repository;
 
-    public int calculate(int completed, int pending, int overdue) {
-        return ProductivityCalculator.compute(completed, pending, overdue);
+    public ProductivityService(ProductivityMetricRepository repository) {
+        this.repository = repository;
     }
 
-    public void flagRule(AnomalyFlagRecord flag) {
-        flag.setRuleCode("LOW_PRODUCTIVITY");
+    public ProductivityMetricRecord save(ProductivityMetricRecord record) {
+        double score = ProductivityCalculator.calculate(
+                record.getHoursLogged(),
+                record.getTasksCompleted()
+        );
+        record.setProductivityScore(score);
+        return repository.save(record);
     }
 }
