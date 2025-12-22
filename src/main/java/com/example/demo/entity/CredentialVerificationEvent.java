@@ -44,3 +44,4 @@ public class CredentialVerificationEvent {
         this.timestamp = timestamp;
     }
 }
+    
