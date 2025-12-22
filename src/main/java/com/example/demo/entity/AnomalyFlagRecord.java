@@ -1,6 +1,15 @@
+package com.example.demo.entity;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "anomaly_flag_records")
-@Getter @Setter
+@Getter
+@Setter
 public class AnomalyFlagRecord {
 
     @Id

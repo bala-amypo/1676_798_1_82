@@ -1,3 +1,5 @@
+package com.example.demo.util;
+
 public class ProductivityCalculator {
 
     public static double compute(double h, int t, int m) {
