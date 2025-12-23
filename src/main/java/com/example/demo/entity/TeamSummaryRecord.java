@@ -1,8 +1,17 @@
+package com.example.demo.entity;
+
+import jakarta.persistence.*;
+import java.time.LocalDate;
+
 @Entity
-@Getter @Setter
 public class TeamSummaryRecord {
-    @Id @GeneratedValue
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String teamName;
-    private double avgProductivity;
+    private LocalDate summaryDate;
+    private Double avgScore;
+    private Integer anomalyCount;
 }

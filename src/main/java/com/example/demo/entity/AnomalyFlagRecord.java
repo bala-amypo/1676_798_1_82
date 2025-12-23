@@ -1,8 +1,19 @@
+package com.example.demo.entity;
+
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
 @Entity
-@Getter @Setter
 public class AnomalyFlagRecord {
-    @Id @GeneratedValue
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private Long employeeId;
-    private String reason;
+    private Long metricId;
+    private String ruleCode;
+    private String severity;
+    private Boolean resolved = false;
+    private LocalDateTime flaggedAt = LocalDateTime.now();
 }

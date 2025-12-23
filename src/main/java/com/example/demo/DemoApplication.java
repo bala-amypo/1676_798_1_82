@@ -1,8 +1,11 @@
-package com.example.demo.util;
+package com.example.demo;
 
-public class ProductivityCalculator {
-    public static double computeScore(double hours, int tasks, int meetings) {
-        double score = (hours * 10) + (tasks * 5) + (meetings * 2);
-        return Math.max(0.0, Math.min(100.0, score));
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DemoApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
     }
 }
