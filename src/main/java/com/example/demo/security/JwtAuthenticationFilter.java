@@ -1,20 +1,45 @@
 package com.example.demo.security;
 
-import jakarta.servlet.*;
-import org.springframework.stereotype.Component;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.*;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.List;
 
-@Component
-public class JwtAuthenticationFilter extends GenericFilter {
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
+
+    private final JwtTokenProvider tokenProvider;
+
+    public JwtAuthenticationFilter(JwtTokenProvider tokenProvider) {
+        this.tokenProvider = tokenProvider;
+    }
 
     @Override
-    public void doFilter(
-            ServletRequest request,
-            ServletResponse response,
-            FilterChain chain)
-            throws IOException, ServletException {
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain filterChain)
+            throws ServletException, IOException {
 
-        chain.doFilter(request, response);
+        String header = request.getHeader("Authorization");
+
+        if (header != null && header.startsWith("Bearer ")) {
+            String token = header.substring(7);
+
+            if (tokenProvider.validateToken(token)) {
+                String email = tokenProvider.getEmailFromToken(token);
+
+                UsernamePasswordAuthenticationToken auth =
+                        new UsernamePasswordAuthenticationToken(
+                                email, null, List.of());
+
+                SecurityContextHolder.getContext().setAuthentication(auth);
+            }
+        }
+
+        filterChain.doFilter(request, response);
     }
 }
