@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/anomaly-flags")
+@RequestMapping("/api/anomalies")
 public class AnomalyFlagController {
 
     private final AnomalyFlagService service;
@@ -17,12 +17,18 @@ public class AnomalyFlagController {
     }
 
     @GetMapping
-    public List<AnomalyFlagRecord> getAll() {
-        return service.getAll();
+    public List<AnomalyFlagRecord> getAllFlags() {
+        return service.getAllFlags();
     }
 
-    @PostMapping
-    public AnomalyFlagRecord save(@RequestBody AnomalyFlagRecord r) {
-        return service.save(r);
+    @GetMapping("/employee/{employeeId}")
+    public List<AnomalyFlagRecord> getFlagsByEmployee(
+            @PathVariable Long employeeId) {
+        return service.getFlagsByEmployee(employeeId);
+    }
+
+    @PutMapping("/{id}/resolve")
+    public AnomalyFlagRecord resolve(@PathVariable Long id) {
+        return service.resolveFlag(id);
     }
 }

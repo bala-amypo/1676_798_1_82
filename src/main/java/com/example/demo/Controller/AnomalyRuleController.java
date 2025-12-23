@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/anomaly-rules")
+@RequestMapping("/api/anomaly-rules")
 public class AnomalyRuleController {
 
     private final AnomalyRuleService service;
@@ -16,13 +16,18 @@ public class AnomalyRuleController {
         this.service = service;
     }
 
-    @GetMapping
-    public List<AnomalyRule> getAll() {
-        return service.getAll();
+    @PostMapping
+    public AnomalyRule createRule(@RequestBody AnomalyRule rule) {
+        return service.create(rule);
     }
 
-    @PostMapping
-    public AnomalyRule save(@RequestBody AnomalyRule rule) {
-        return service.save(rule);
+    @GetMapping("/active")
+    public List<AnomalyRule> getActiveRules() {
+        return service.getActiveRules();
+    }
+
+    @GetMapping
+    public List<AnomalyRule> getAllRules() {
+        return service.getAllRules();
     }
 }
