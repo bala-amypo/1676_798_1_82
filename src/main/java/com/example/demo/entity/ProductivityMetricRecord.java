@@ -6,8 +6,10 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(
-    name = "productivity_metrics",
-    uniqueConstraints = @UniqueConstraint(columnNames = {"employeeId", "date"})
+    name = "productivity_metric_records",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"employee_id", "metric_date"})
+    }
 )
 public class ProductivityMetricRecord {
 
@@ -15,17 +17,23 @@ public class ProductivityMetricRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "employee_id", nullable = false)
     private Long employeeId;
+
+    @Column(name = "metric_date", nullable = false)
     private LocalDate date;
 
-    private double hoursLogged;
+    private int hoursLogged;
     private int tasksCompleted;
     private int meetingsAttended;
+
     private double productivityScore;
 
-    private LocalDateTime recordedAt = LocalDateTime.now();
+    private LocalDateTime createdAt = LocalDateTime.now();
 
-    public ProductivityMetricRecord() {}
+    // =====================
+    // Getters and Setters
+    // =====================
 
     public Long getId() {
         return id;
@@ -47,11 +55,11 @@ public class ProductivityMetricRecord {
         this.date = date;
     }
 
-    public double getHoursLogged() {
+    public int getHoursLogged() {
         return hoursLogged;
     }
 
-    public void setHoursLogged(double hoursLogged) {
+    public void setHoursLogged(int hoursLogged) {
         this.hoursLogged = hoursLogged;
     }
 
@@ -77,5 +85,9 @@ public class ProductivityMetricRecord {
 
     public void setProductivityScore(double productivityScore) {
         this.productivityScore = productivityScore;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 }

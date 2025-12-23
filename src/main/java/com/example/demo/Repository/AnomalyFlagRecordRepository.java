@@ -8,7 +8,9 @@ import java.util.List;
 public interface AnomalyFlagRecordRepository
         extends JpaRepository<AnomalyFlagRecord, Long> {
 
+    // ✅ Correct derived query (metric.id)
     List<AnomalyFlagRecord> findByMetric_Id(Long metricId);
 
+    // ✅ Find unresolved anomalies
     List<AnomalyFlagRecord> findByResolvedFalse();
 }
