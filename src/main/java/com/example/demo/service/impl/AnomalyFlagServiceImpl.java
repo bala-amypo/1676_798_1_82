@@ -33,7 +33,8 @@ public class AnomalyFlagServiceImpl implements AnomalyFlagService {
 
     @Override
     public List<AnomalyFlagRecord> getFlagsByEmployee(Long employeeId) {
-        return repository.findByEmployeeId(employeeId);
+        return repository.findByMetric_EmployeeId(employeeId);
+
     }
 
     @Override
