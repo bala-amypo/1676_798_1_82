@@ -21,10 +21,11 @@ public class ProductivityMetricServiceImpl implements ProductivityMetricService 
 
     @Override
     public ProductivityMetricRecord record(ProductivityMetricRecord record) {
-        repository.findByEmployeeIdAndDate(record.getEmployeeId(), record.getDate())
-                .ifPresent(r -> {
-                    throw new IllegalStateException("Metric already exists");
-                });
+        repository.findByEmployeeIdAndDate(
+                record.getEmployeeId(), record.getDate()
+        ).ifPresent(r -> {
+            throw new IllegalStateException("Metric already exists");
+        });
 
         double score = ProductivityCalculator.compute(
                 record.getHoursLogged(),
@@ -38,7 +39,7 @@ public class ProductivityMetricServiceImpl implements ProductivityMetricService 
 
     @Override
     public ProductivityMetricRecord update(Long id, ProductivityMetricRecord updated) {
-        ProductivityMetricRecord existing = getMetricById(id)
+        ProductivityMetricRecord existing = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Metric not found"));
 
         existing.setHoursLogged(updated.getHoursLogged());
