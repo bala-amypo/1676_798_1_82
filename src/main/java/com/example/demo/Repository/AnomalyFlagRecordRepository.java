@@ -8,9 +8,7 @@ import java.util.List;
 public interface AnomalyFlagRecordRepository
         extends JpaRepository<AnomalyFlagRecord, Long> {
 
-    List<AnomalyFlagRecord> findByEmployeeId(Long employeeId);
-
-    List<AnomalyFlagRecord> findByMetricId(Long metricId);
+    List<AnomalyFlagRecord> findByMetric_Id(Long metricId);
 
     List<AnomalyFlagRecord> findByResolvedFalse();
 }

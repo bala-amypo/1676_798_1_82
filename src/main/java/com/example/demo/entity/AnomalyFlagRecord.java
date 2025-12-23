@@ -5,45 +5,21 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "anomaly_flags")
+
+
+@Entity
 public class AnomalyFlagRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long employeeId;
-    private String ruleCode;
-    private boolean resolved = false;
+    @ManyToOne
+    @JoinColumn(name = "metric_id", nullable = false)
+    private ProductivityMetricRecord metric;
 
-    private LocalDateTime flaggedAt = LocalDateTime.now();
+    private String reason;
+    private boolean resolved;
 
-    public AnomalyFlagRecord() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public Long getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public String getRuleCode() {
-        return ruleCode;
-    }
-
-    public void setRuleCode(String ruleCode) {
-        this.ruleCode = ruleCode;
-    }
-
-    public boolean isResolved() {
-        return resolved;
-    }
-
-    public void setResolved(boolean resolved) {
-        this.resolved = resolved;
-    }
+    // getters & setters
 }
