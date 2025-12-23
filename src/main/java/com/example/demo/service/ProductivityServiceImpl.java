@@ -1,28 +1,19 @@
-package com.example.demo.service.impl;
+package com.example.demo.service;
 
 import com.example.demo.entity.ProductivityMetricRecord;
-import com.example.demo.repository.ProductivityMetricRecordRepository;
-import com.example.demo.service.ProductivityMetricService;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
-@Service
-public class ProductivityMetricServiceImpl implements ProductivityMetricService {
+public interface ProductivityMetricService {
 
-    private final ProductivityMetricRecordRepository repository;
+    ProductivityMetricRecord record(ProductivityMetricRecord record);
 
-    public ProductivityMetricServiceImpl(ProductivityMetricRecordRepository repository) {
-        this.repository = repository;
-    }
+    ProductivityMetricRecord update(Long id, ProductivityMetricRecord updated);
 
-    @Override
-    public List<ProductivityMetricRecord> getAll() {
-        return repository.findAll();
-    }
+    List<ProductivityMetricRecord> getMetricsByEmployee(Long employeeId);
 
-    @Override
-    public ProductivityMetricRecord save(ProductivityMetricRecord record) {
-        return repository.save(record);
-    }
+    Optional<ProductivityMetricRecord> getMetricById(Long id);
+
+    List<ProductivityMetricRecord> getAllMetrics();
 }

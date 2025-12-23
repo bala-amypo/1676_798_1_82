@@ -3,5 +3,10 @@ package com.example.demo.service;
 import com.example.demo.entity.UserAccount;
 
 public interface UserAccountService {
-    UserAccount findByUsername(String username);
+
+    UserAccount register(UserAccount user);
+
+    UserAccount findByEmail(String email);
+
+    UserAccount findById(Long id);
 }

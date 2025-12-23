@@ -5,6 +5,7 @@ import com.example.demo.repository.TeamSummaryRecordRepository;
 import com.example.demo.service.TeamSummaryService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -17,12 +18,22 @@ public class TeamSummaryServiceImpl implements TeamSummaryService {
     }
 
     @Override
-    public List<TeamSummaryRecord> getAll() {
-        return repository.findAll();
+    public TeamSummaryRecord generateSummary(String teamName, LocalDate date) {
+        TeamSummaryRecord summary = new TeamSummaryRecord();
+        summary.setTeamName(teamName);
+        summary.setSummaryDate(date);
+        summary.setAvgScore(0.0);
+        summary.setAnomalyCount(0);
+        return repository.save(summary);
     }
 
     @Override
-    public TeamSummaryRecord save(TeamSummaryRecord record) {
-        return repository.save(record);
+    public List<TeamSummaryRecord> getSummariesByTeam(String teamName) {
+        return repository.findByTeamName(teamName);
+    }
+
+    @Override
+    public List<TeamSummaryRecord> getAllSummaries() {
+        return repository.findAll();
     }
 }

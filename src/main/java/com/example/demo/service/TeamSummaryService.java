@@ -1,9 +1,15 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.TeamSummaryRecord;
+
+import java.time.LocalDate;
 import java.util.List;
 
 public interface TeamSummaryService {
-    List<TeamSummaryRecord> getAll();
-    TeamSummaryRecord save(TeamSummaryRecord record);
+
+    TeamSummaryRecord generateSummary(String teamName, LocalDate date);
+
+    List<TeamSummaryRecord> getSummariesByTeam(String teamName);
+
+    List<TeamSummaryRecord> getAllSummaries();
 }
