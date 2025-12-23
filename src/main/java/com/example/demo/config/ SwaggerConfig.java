@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-public class OpenApiConfig {
+public class SwaggerConfig {
 
     @Bean
     public OpenAPI customOpenAPI() {
@@ -19,4 +19,4 @@ public class OpenApiConfig {
         }
 }
 
-SwaggerConfig
+// SwaggerConfig
