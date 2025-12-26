@@ -1,12 +1,12 @@
 package com.example.demo.exception;
 
-import org.springframework.web.bind.annotation.*;
+public class DuplicateMetricException extends RuntimeException {
 
-@RestControllerAdvice
-public class RestExceptionHandler {
+    public DuplicateMetricException(String message) {
+        super(message);
+    }
 
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public String handle(ResourceNotFoundException ex) {
-        return ex.getMessage();
+    public DuplicateMetricException() {
+        super("metric already exists");
     }
 }
