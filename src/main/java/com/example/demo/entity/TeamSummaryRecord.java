@@ -1,17 +1,34 @@
-package com.example.demo.entity;
+package com.example.demo.model;
 
-import jakarta.persistence.*;
-
-@Entity
 public class TeamSummaryRecord {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    private Long teamId;
-    private int totalHours;
-    private int totalTasks;
-    private int totalMeetings;
+    private String teamName;
+    private Double averageScore;
+    private Integer memberCount;
 
-    // getters and setters
+    public TeamSummaryRecord() {}
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public Double getAverageScore() {
+        return averageScore;
+    }
+
+    public void setAverageScore(Double averageScore) {
+        this.averageScore = averageScore;
+    }
+
+    public Integer getMemberCount() {
+        return memberCount;
+    }
+
+    public void setMemberCount(Integer memberCount) {
+        this.memberCount = memberCount;
+    }z
 }
