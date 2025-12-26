@@ -14,18 +14,17 @@
     <name>demo</name>
     <description>Demo project for Spring Boot TestNG Mockito</description>
 
-    <!-- ✅ SPRING BOOT 3 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.0</version>
-        <relativePath/>
+        <relativePath />
     </parent>
 
     <properties>
         <java.version>17</java.version>
         <testng.version>7.8.0</testng.version>
-        <mockito.version>5.6.0</mockito.version>
+        <mockito.version>5.20.0</mockito.version>
     </properties>
 
     <dependencies>
@@ -54,14 +53,14 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!-- ================= DATABASE (IN-MEMORY) ================= -->
+        <!-- ================= H2 (IN‑MEMORY) ================= -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
 
-        <!-- ================= SWAGGER / OPENAPI ================= -->
+        <!-- ================= SWAGGER ================= -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -70,7 +69,7 @@
 
         <!-- ================= TESTING ================= -->
 
-        <!-- ❌ REMOVE JUNIT -->
+        <!-- Spring Boot Test (without JUnit) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -82,12 +81,12 @@
                 </exclusion>
                 <exclusion>
                     <groupId>org.junit.jupiter</groupId>
-                    <artifactId>junit-jupiter</artifactId>
+                    <artifactId>junit-jupiter-engine</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
 
-        <!-- ✅ TESTNG -->
+        <!-- TestNG -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -95,7 +94,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- ✅ MOCKITO -->
+        <!-- Mockito core only -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
@@ -103,35 +102,27 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-inline</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
-    <!-- ================= BUILD ================= -->
     <build>
         <plugins>
 
-            <!-- SPRING BOOT -->
+            <!-- Spring Boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- TESTNG ENABLEMENT -->
+            <!-- Surefire plugin must know TestNG -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
                 <configuration>
+                    <testNGArtifactName>org.testng:testng</testNGArtifactName>
                     <includes>
                         <include>**/*Test.java</include>
                     </includes>
-                    <testNGArtifactName>org.testng:testng</testNGArtifactName>
                 </configuration>
             </plugin>
 
