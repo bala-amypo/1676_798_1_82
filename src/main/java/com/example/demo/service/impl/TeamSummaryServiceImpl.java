@@ -1,39 +1,39 @@
-package com.example.demo.service.impl;
+// package com.example.demo.service.impl;
 
-import com.example.demo.entity.TeamSummaryRecord;
-import com.example.demo.repository.TeamSummaryRecordRepository;
-import com.example.demo.service.TeamSummaryService;
-import org.springframework.stereotype.Service;
+// import com.example.demo.entity.TeamSummaryRecord;
+// import com.example.demo.repository.TeamSummaryRecordRepository;
+// import com.example.demo.service.TeamSummaryService;
+// import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.util.List;
+// import java.time.LocalDate;
+// import java.util.List;
 
-@Service
-public class TeamSummaryServiceImpl implements TeamSummaryService {
+// @Service
+// public class TeamSummaryServiceImpl implements TeamSummaryService {
 
-    private final TeamSummaryRecordRepository repository;
+//     private final TeamSummaryRecordRepository repository;
 
-    public TeamSummaryServiceImpl(TeamSummaryRecordRepository repository) {
-        this.repository = repository;
-    }
+//     public TeamSummaryServiceImpl(TeamSummaryRecordRepository repository) {
+//         this.repository = repository;
+//     }
 
-    @Override
-    public TeamSummaryRecord generateSummary(String teamName, LocalDate date) {
-        TeamSummaryRecord summary = new TeamSummaryRecord();
-        summary.setTeamName(teamName);
-        summary.setSummaryDate(date);
-        summary.setAvgScore(0.0);
-        summary.setAnomalyCount(0);
-        return repository.save(summary);
-    }
+//     @Override
+//     public TeamSummaryRecord generateSummary(String teamName, LocalDate date) {
+//         TeamSummaryRecord summary = new TeamSummaryRecord();
+//         summary.setTeamName(teamName);
+//         summary.setSummaryDate(date);
+//         summary.setAvgScore(0.0);
+//         summary.setAnomalyCount(0);
+//         return repository.save(summary);
+//     }
 
-    @Override
-    public List<TeamSummaryRecord> getSummariesByTeam(String teamName) {
-        return repository.findByTeamName(teamName);
-    }
+//     @Override
+//     public List<TeamSummaryRecord> getSummariesByTeam(String teamName) {
+//         return repository.findByTeamName(teamName);
+//     }
 
-    @Override
-    public List<TeamSummaryRecord> getAllSummaries() {
-        return repository.findAll();
-    }
-}
+//     @Override
+//     public List<TeamSummaryRecord> getAllSummaries() {
+//         return repository.findAll();
+//     }
+// }

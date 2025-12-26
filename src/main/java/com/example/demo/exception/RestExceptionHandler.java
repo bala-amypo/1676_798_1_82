@@ -1,12 +1,12 @@
-package com.example.demo.exception;
+// package com.example.demo.exception;
 
-import org.springframework.web.bind.annotation.*;
+// import org.springframework.web.bind.annotation.*;
 
-@RestControllerAdvice
-public class RestExceptionHandler {
+// @RestControllerAdvice
+// public class RestExceptionHandler {
 
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public String handle(ResourceNotFoundException ex) {
-        return ex.getMessage();
-    }
-}
+//     @ExceptionHandler(ResourceNotFoundException.class)
+//     public String handle(ResourceNotFoundException ex) {
+//         return ex.getMessage();
+//     }
+// }
