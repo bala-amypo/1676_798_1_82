@@ -12,16 +12,16 @@ public class EmployeeProfile {
 
     private String name;
     
-    private boolean active; // <-- add this field
+    private Boolean active; // <-- add this field
 
     // Other fields...
 
     // Getter and setter for 'active'
-    public boolean isActive() {
+    public Boolean isActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
