@@ -1,61 +1,61 @@
-// package com.example.demo.dto;
+package com.example.demo.dto;
 
-// public class AnomalyRuleDto {
+public class AnomalyRuleDto {
 
-//     private Long id;
-//     private String ruleCode;
-//     private String description;
-//     private String thresholdType;
-//     private Double thresholdValue;
-//     private Boolean active;
+    private Long id;
+    private String ruleCode;
+    private String description;
+    private String thresholdType;
+    private Double thresholdValue;
+    private Boolean active;
 
-//     public AnomalyRuleDto() {}
+    public AnomalyRuleDto() {}
 
-//     public Long getId() {
-//         return id;
-//     }
+    public Long getId() {
+        return id;
+    }
 
-//     public String getRuleCode() {
-//         return ruleCode;
-//     }
+    public String getRuleCode() {
+        return ruleCode;
+    }
 
-//     public String getDescription() {
-//         return description;
-//     }
+    public String getDescription() {
+        return description;
+    }
 
-//     public String getThresholdType() {
-//         return thresholdType;
-//     }
+    public String getThresholdType() {
+        return thresholdType;
+    }
 
-//     public Double getThresholdValue() {
-//         return thresholdValue;
-//     }
+    public Double getThresholdValue() {
+        return thresholdValue;
+    }
 
-//     public Boolean getActive() {
-//         return active;
-//     }
+    public Boolean getActive() {
+        return active;
+    }
 
-//     public void setId(Long id) {
-//         this.id = id;
-//     }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-//     public void setRuleCode(String ruleCode) {
-//         this.ruleCode = ruleCode;
-//     }
+    public void setRuleCode(String ruleCode) {
+        this.ruleCode = ruleCode;
+    }
 
-//     public void setDescription(String description) {
-//         this.description = description;
-//     }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-//     public void setThresholdType(String thresholdType) {
-//         this.thresholdType = thresholdType;
-//     }
+    public void setThresholdType(String thresholdType) {
+        this.thresholdType = thresholdType;
+    }
 
-//     public void setThresholdValue(Double thresholdValue) {
-//         this.thresholdValue = thresholdValue;
-//     }
+    public void setThresholdValue(Double thresholdValue) {
+        this.thresholdValue = thresholdValue;
+    }
 
-//     public void setActive(Boolean active) {
-//         this.active = active;
-//     }
-// }
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+}
