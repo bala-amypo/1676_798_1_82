@@ -1,7 +1,9 @@
-package com.example.demo.model;
+package com.example.demo.entity;
+
 import java.time.LocalDate;
 
 public class TeamSummaryRecord {
+
     private String teamName;
     private Double avgHoursLogged;
     private Double avgScore;
