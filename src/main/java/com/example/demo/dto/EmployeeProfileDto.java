@@ -1,7 +1,5 @@
 package com.example.demo.dto;
 
-import java.time.LocalDateTime;
-
 public class EmployeeProfileDto {
 
     private Long id;
@@ -9,12 +7,9 @@ public class EmployeeProfileDto {
     private String fullName;
     private String email;
     private String teamName;
-    private String role;
     private Boolean active;
-    private LocalDateTime createdAt;
 
-    public EmployeeProfileDto() {
-    }
+    public EmployeeProfileDto() {}
 
     public Long getId() {
         return id;
@@ -56,27 +51,11 @@ public class EmployeeProfileDto {
         this.teamName = teamName;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public Boolean getActive() {
         return active;
     }
 
     public void setActive(Boolean active) {
         this.active = active;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 }
