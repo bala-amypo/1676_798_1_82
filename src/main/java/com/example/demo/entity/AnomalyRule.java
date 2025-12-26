@@ -7,7 +7,22 @@ public class AnomalyRule {
     private Double thresholdValue;
 
     public String getRuleCode() { return ruleCode; }
-    public void setRuleCode(String ruleCode) { this.ruleCode = ruleCode; }
+    public void setRuleCode(Strpackage com.example.demo.model;
+
+import jakarta.persistence.*;
+
+@Entity
+public class AnomalyRule {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String ruleName;
+    private String condition;
+
+    // getters and setters
+}
+ing ruleCode) { this.ruleCode = ruleCode; }
 
     public Boolean getActive() { return active; }
     public void setActive(Boolean active) { this.active = active; }

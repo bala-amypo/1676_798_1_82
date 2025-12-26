@@ -1,11 +1,16 @@
-package com.example.demo.entity;
+package com.example.demo.model;
 
-import java.util.Set;
+import jakarta.persistence.*;
 
+@Entity
 public class UserAccount {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private Set<String> roles;
+    private String username;
+    private String password;
+    private String role;
 
-    public Set<String> getRoles() { return roles; }
-    public void setRoles(Set<String> roles) { this.roles = roles; }
+    // getters and setters
 }
