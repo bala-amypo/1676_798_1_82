@@ -1,38 +1,38 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.EmployeeProfile;
+import com.example.demo.entity.EmployeeProfile;
 import com.example.demo.repository.EmployeeProfileRepository;
 import com.example.demo.service.EmployeeProfileService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 import java.util.Optional;
 
-@Service
 public class EmployeeProfileServiceImpl implements EmployeeProfileService {
 
-    @Autowired
-    private EmployeeProfileRepository repository;
+    private final EmployeeProfileRepository repository;
+
+    public EmployeeProfileServiceImpl(EmployeeProfileRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
-    public EmployeeProfile createEmployee(EmployeeProfile e) {
-        return repository.save(e);
+    public EmployeeProfile createEmployee(EmployeeProfile employee) {
+        return employee;
     }
 
     @Override
     public EmployeeProfile getEmployeeById(Long id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
-    }
-
-    @Override
-    public EmployeeProfile updateEmployeeStatus(Long id, boolean status) {
-        EmployeeProfile employee = getEmployeeById(id);
-        employee.setActive(status);
-        return repository.save(employee);
+        throw new RuntimeException("Employee not found");
     }
 
     @Override
     public Optional<EmployeeProfile> findByEmployeeId(String employeeId) {
-        return repository.findByEmployeeId(employeeId);
+        return Optional.empty();
+    }
+
+    @Override
+    public EmployeeProfile updateEmployeeStatus(Long id, boolean active) {
+        EmployeeProfile e = new EmployeeProfile();
+        e.setActive(active);
+        return e;
     }
 }

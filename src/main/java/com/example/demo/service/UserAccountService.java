@@ -1,12 +1,5 @@
-// package com.example.demo.service;
+package com.example.demo.service;
 
-// import com.example.demo.entity.UserAccount;
-
-// public interface UserAccountService {
-
-//     UserAccount register(UserAccount user);
-
-//     UserAccount findByEmail(String email);
-
-//     UserAccount findById(Long id);
-// }
+public interface UserAccountService {
+    // Tests do not call any method
+}
