@@ -77,6 +77,35 @@
             <version>5.5.0</version>
             <scope>test</scope>
         </dependency>
+        <!-- Spring Boot Test (JUnit 5) -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+    <exclusions>
+        <!-- Exclude JUnit Vintage to avoid conflicts -->
+        <exclusion>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+<!-- Mockito -->
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <version>5.5.0</version>
+    <scope>test</scope>
+</dependency>
+
+<!-- TestNG (if your project really uses it) -->
+<dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>7.8.0</version>
+    <scope>test</scope>
+</dependency>
 
     </dependencies>
 
