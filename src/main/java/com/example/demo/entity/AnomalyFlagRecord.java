@@ -1,55 +1,28 @@
-package com.example.demo.entity;
+package com.example.demo.model;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "anomaly_flag_records")
 public class AnomalyFlagRecord {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long metricId;
+    private String ruleCode;
+    private String severity;
+    private String details;
+    private Boolean resolved = false;
 
-    // ✅ Relationship with ProductivityMetricRecord
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "metric_id", nullable = false)
-    private ProductivityMetricRecord metric;
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    @Column(nullable = false)
-    private String reason;
+    public Long getMetricId() { return metricId; }
+    public void setMetricId(Long metricId) { this.metricId = metricId; }
 
-    @Column(nullable = false)
-    private boolean resolved = false;
+    public String getRuleCode() { return ruleCode; }
+    public void setRuleCode(String ruleCode) { this.ruleCode = ruleCode; }
 
-    // =====================
-    // Getters and Setters
-    // =====================
+    public String getSeverity() { return severity; }
+    public void setSeverity(String severity) { this.severity = severity; }
 
-    public Long getId() {
-        return id;
-    }
+    public String getDetails() { return details; }
+    public void setDetails(String details) { this.details = details; }
 
-    public ProductivityMetricRecord getMetric() {
-        return metric;
-    }
-
-    public void setMetric(ProductivityMetricRecord metric) {
-        this.metric = metric;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
-    public boolean isResolved() {
-        return resolved;
-    }
-
-    public void setResolved(boolean resolved) {
-        this.resolved = resolved;
-    }
+    public Boolean getResolved() { return resolved; }
+    public void setResolved(Boolean resolved) { this.resolved = resolved; }
 }

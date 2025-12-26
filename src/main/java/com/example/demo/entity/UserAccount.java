@@ -1,48 +1,18 @@
-package com.example.demo.entity;
+package com.example.demo.model;
+import java.util.Set;
+import java.util.HashSet;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "users")
 public class UserAccount {
+    private String username;
+    private String password;
+    private Set<String> roles = new HashSet<>();
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
 
-    @Column(unique = true)
-    private String email;
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
-    private String passwordHash;
-    private String role;
-
-    public UserAccount() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
+    public Set<String> getRoles() { return roles; }
+    public void setRoles(Set<String> roles) { this.roles = roles; }
 }
