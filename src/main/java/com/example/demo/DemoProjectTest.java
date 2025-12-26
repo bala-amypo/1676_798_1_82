@@ -1,24 +1,24 @@
 package com.example.demo;
 
-import org.junit.jupiter.api.Test;
+import com.example.demo.model.*;
+import com.example.demo.repository.*;
+import com.example.demo.service.EmployeeProfileService;
+import com.example.demo.service.ProductivityMetricService;
+import com.example.demo.util.ProductivityCalculator;
+
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.testng.Assert;
+import org.testng.annotations.*;
+
+import java.time.LocalDate;
+import java.util.*;
 
 @SpringBootTest
+@Listeners(TestResultListener.class)
 public class DemoProjectTest {
 
-    @Test
-    void contextLoads() {
-        // This test just checks if the Spring context loads correctly
-    }
-}
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
-public class DemoProjectTest {
-
-    @Test
-    void contextLoads() {
-        // test logic
-    }
+    // ALL YOUR TEST CODE HERE
 }
