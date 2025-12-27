@@ -1,5 +1,4 @@
 package com.example.demo.model;
-import com.example.demo.model.ProductivityMetricRecord;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
@@ -12,8 +11,7 @@ public class ProductivityMetricRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Stored as String, but tests pass long/Long
-    private String employeeId;
+    private Long employeeId; // Changed from String to Long
 
     private double hoursLogged;
     private int tasksCompleted;
@@ -27,18 +25,16 @@ public class ProductivityMetricRecord {
 
     /* ================= Constructors ================= */
 
-    public ProductivityMetricRecord() {
-    }
+    public ProductivityMetricRecord() {}
 
     public ProductivityMetricRecord(
-            String employeeId,
+            Long employeeId,
             double hoursLogged,
             int tasksCompleted,
             int meetingsAttended,
             double productivityScore,
             LocalDate date,
             String rawDataJson) {
-
         this.employeeId = employeeId;
         this.hoursLogged = hoursLogged;
         this.tasksCompleted = tasksCompleted;
@@ -58,27 +54,20 @@ public class ProductivityMetricRecord {
         this.id = id;
     }
 
-    /* -------- employeeId (ALL overloads for tests) -------- */
-
-    public String getEmployeeId() {
+    public Long getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(String employeeId) {
+    public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
     }
 
-    // 🔥 REQUIRED for tests passing primitive long
-    public void setEmployeeId(long employeeId) {
-        this.employeeId = String.valueOf(employeeId);
+    // Optional convenience methods for String input
+    public void setEmployeeId(String employeeId) {
+        if (employeeId != null) {
+            this.employeeId = Long.valueOf(employeeId);
+        }
     }
-
-    // 🔥 REQUIRED for tests passing Long object
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = String.valueOf(employeeId);
-    }
-
-    /* -------- Metrics -------- */
 
     public double getHoursLogged() {
         return hoursLogged;
