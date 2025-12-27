@@ -12,27 +12,33 @@ public class ProductivityMetricRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // TEST EXPECTS Long, NOT String
+    // Required by tests
     private Long employeeId;
 
-    private int hoursWorked;
+    // Required by tests (double + exact name)
+    private double hoursLogged;
+
     private int tasksCompleted;
     private int meetingsAttended;
 
     private int productivityScore;
 
-    // TEST EXPECTS setDate(LocalDate)
+    // Required by tests
     private LocalDate date;
+
+    // Required by tests
+    @Column(columnDefinition = "TEXT")
+    private String rawDataJson;
 
     private LocalDateTime createdAt;
 
-    // --- Constructors ---
+    // ---------------- Constructors ----------------
 
     public ProductivityMetricRecord() {
         this.createdAt = LocalDateTime.now();
     }
 
-    // --- Getters & Setters ---
+    // ---------------- Getters & Setters ----------------
 
     public Long getId() {
         return id;
@@ -50,12 +56,14 @@ public class ProductivityMetricRecord {
         this.employeeId = employeeId;
     }
 
-    public int getHoursWorked() {
-        return hoursWorked;
+    // 🔑 REQUIRED BY TEST
+    public double getHoursLogged() {
+        return hoursLogged;
     }
 
-    public void setHoursWorked(int hoursWorked) {
-        this.hoursWorked = hoursWorked;
+    // 🔑 REQUIRED BY TEST
+    public void setHoursLogged(double hoursLogged) {
+        this.hoursLogged = hoursLogged;
     }
 
     public int getTasksCompleted() {
@@ -82,12 +90,24 @@ public class ProductivityMetricRecord {
         this.productivityScore = productivityScore;
     }
 
+    // 🔑 REQUIRED BY TEST
     public LocalDate getDate() {
         return date;
     }
 
+    // 🔑 REQUIRED BY TEST
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    // 🔑 REQUIRED BY TEST
+    public String getRawDataJson() {
+        return rawDataJson;
+    }
+
+    // 🔑 REQUIRED BY TEST
+    public void setRawDataJson(String rawDataJson) {
+        this.rawDataJson = rawDataJson;
     }
 
     public LocalDateTime getCreatedAt() {
