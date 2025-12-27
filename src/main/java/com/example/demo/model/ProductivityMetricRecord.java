@@ -1,4 +1,5 @@
 package com.example.demo.model;
+import com.example.demo.model.ProductivityMetricRecord;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
