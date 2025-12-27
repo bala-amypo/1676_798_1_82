@@ -11,12 +11,34 @@ public class EmployeeProfile {
     private Long id;
 
     private String name;
-    
-    private Boolean active; // <-- add this field
+    private Boolean active;
 
-    // Other fields...
+    // Constructors
+    public EmployeeProfile() {
+    }
 
-    // Getter and setter for 'active'
+    public EmployeeProfile(String name, Boolean active) {
+        this.name = name;
+        this.active = active;
+    }
+
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Boolean isActive() {
         return active;
     }
@@ -24,6 +46,4 @@ public class EmployeeProfile {
     public void setActive(Boolean active) {
         this.active = active;
     }
-
-    // Getters and setters for other fields...
 }
