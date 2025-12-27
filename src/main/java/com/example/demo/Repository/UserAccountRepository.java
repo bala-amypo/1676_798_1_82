@@ -1,6 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.entity.UserAccount;
+import com.example.demo.model.UserAccount;
 
 import java.util.Optional;
 

@@ -1,6 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.entity.ProductivityMetricRecord;
+import com.example.demo.model.ProductivityMetricRecord;
 
 import java.util.List;
 

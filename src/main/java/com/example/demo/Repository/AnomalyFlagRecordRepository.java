@@ -1,6 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.entity.AnomalyFlagRecord;
+import com.example.demo.model.AnomalyFlagRecord;
 
 import java.util.List;
 
