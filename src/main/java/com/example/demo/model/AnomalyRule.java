@@ -10,25 +10,39 @@ public class AnomalyRule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String ruleCode;
     private String name;
     private String description;
+    private double thresholdValue;
 
-    // Constructors
+    // --- Constructors ---
+
     public AnomalyRule() {
     }
 
-    public AnomalyRule(String name, String description) {
+    public AnomalyRule(String ruleCode, String name, String description, double thresholdValue) {
+        this.ruleCode = ruleCode;
         this.name = name;
         this.description = description;
+        this.thresholdValue = thresholdValue;
     }
 
-    // Getters and Setters
+    // --- Getters & Setters ---
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getRuleCode() {
+        return ruleCode;
+    }
+
+    public void setRuleCode(String ruleCode) {
+        this.ruleCode = ruleCode;
     }
 
     public String getName() {
@@ -42,33 +56,16 @@ public class AnomalyRule {
     public String getDescription() {
         return description;
     }
-package com.example.demo.model;
-
-import jakarta.persistence.*;
-
-@Entity
-public class AnomalyRule {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String ruleCode;
-    private double thresholdValue;
-
-    public AnomalyRule() {}
-
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public String getRuleCode() { return ruleCode; }
-    public void setRuleCode(String ruleCode) { this.ruleCode = ruleCode; }
-
-    public double getThresholdValue() { return thresholdValue; }
-    public void setThresholdValue(double thresholdValue) { this.thresholdValue = thresholdValue; }
-}
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public double getThresholdValue() {
+        return thresholdValue;
+    }
+
+    public void setThresholdValue(double thresholdValue) {
+        this.thresholdValue = thresholdValue;
     }
 }
