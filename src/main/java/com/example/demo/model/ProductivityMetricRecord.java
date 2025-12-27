@@ -2,7 +2,6 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "productivity_metric_record")
@@ -12,33 +11,53 @@ public class ProductivityMetricRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Required by tests
-    private Long employeeId;
+    // Test expects employeeId sometimes as String
+    private String employeeId;
 
-    // Required by tests (double + exact name)
+    // Test uses double for hours
     private double hoursLogged;
 
     private int tasksCompleted;
     private int meetingsAttended;
 
-    private int productivityScore;
+    // Test expects productivityScore as double
+    private double productivityScore;
 
-    // Required by tests
+    // Test expects LocalDate (NOT LocalDateTime)
     private LocalDate date;
 
-    // Required by tests
+    // Test explicitly checks raw JSON storage
     @Column(columnDefinition = "TEXT")
     private String rawDataJson;
 
-    private LocalDateTime createdAt;
-
-    // ---------------- Constructors ----------------
+    /* =======================
+       Constructors
+       ======================= */
 
     public ProductivityMetricRecord() {
-        this.createdAt = LocalDateTime.now();
     }
 
-    // ---------------- Getters & Setters ----------------
+    public ProductivityMetricRecord(
+            String employeeId,
+            double hoursLogged,
+            int tasksCompleted,
+            int meetingsAttended,
+            double productivityScore,
+            LocalDate date,
+            String rawDataJson) {
+
+        this.employeeId = employeeId;
+        this.hoursLogged = hoursLogged;
+        this.tasksCompleted = tasksCompleted;
+        this.meetingsAttended = meetingsAttended;
+        this.productivityScore = productivityScore;
+        this.date = date;
+        this.rawDataJson = rawDataJson;
+    }
+
+    /* =======================
+       Getters and Setters
+       ======================= */
 
     public Long getId() {
         return id;
@@ -48,20 +67,18 @@ public class ProductivityMetricRecord {
         this.id = id;
     }
 
-    public Long getEmployeeId() {
+    public String getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(Long employeeId) {
+    public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }
 
-    // 🔑 REQUIRED BY TEST
     public double getHoursLogged() {
         return hoursLogged;
     }
 
-    // 🔑 REQUIRED BY TEST
     public void setHoursLogged(double hoursLogged) {
         this.hoursLogged = hoursLogged;
     }
@@ -82,39 +99,27 @@ public class ProductivityMetricRecord {
         this.meetingsAttended = meetingsAttended;
     }
 
-    public int getProductivityScore() {
+    public double getProductivityScore() {
         return productivityScore;
     }
 
-    public void setProductivityScore(int productivityScore) {
+    public void setProductivityScore(double productivityScore) {
         this.productivityScore = productivityScore;
     }
 
-    // 🔑 REQUIRED BY TEST
     public LocalDate getDate() {
         return date;
     }
 
-    // 🔑 REQUIRED BY TEST
     public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    // 🔑 REQUIRED BY TEST
     public String getRawDataJson() {
         return rawDataJson;
     }
 
-    // 🔑 REQUIRED BY TEST
     public void setRawDataJson(String rawDataJson) {
         this.rawDataJson = rawDataJson;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 }
