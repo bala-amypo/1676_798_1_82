@@ -14,6 +14,6 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("Demo Project API")
                         .version("1.0")
-                        .description("API documentation for Demo Project"));
+                        .description("Spring Boot CRUD API with Swagger"));
     }
 }
