@@ -11,28 +11,20 @@ public class ProductivityMetricRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Test expects employeeId sometimes as String
+    // Stored as String, but tests pass long/Long
     private String employeeId;
 
-    // Test uses double for hours
     private double hoursLogged;
-
     private int tasksCompleted;
     private int meetingsAttended;
-
-    // Test expects productivityScore as double
     private double productivityScore;
 
-    // Test expects LocalDate (NOT LocalDateTime)
     private LocalDate date;
 
-    // Test explicitly checks raw JSON storage
     @Column(columnDefinition = "TEXT")
     private String rawDataJson;
 
-    /* =======================
-       Constructors
-       ======================= */
+    /* ================= Constructors ================= */
 
     public ProductivityMetricRecord() {
     }
@@ -55,9 +47,7 @@ public class ProductivityMetricRecord {
         this.rawDataJson = rawDataJson;
     }
 
-    /* =======================
-       Getters and Setters
-       ======================= */
+    /* ================= Getters & Setters ================= */
 
     public Long getId() {
         return id;
@@ -67,6 +57,8 @@ public class ProductivityMetricRecord {
         this.id = id;
     }
 
+    /* -------- employeeId (ALL overloads for tests) -------- */
+
     public String getEmployeeId() {
         return employeeId;
     }
@@ -74,6 +66,18 @@ public class ProductivityMetricRecord {
     public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }
+
+    // 🔥 REQUIRED for tests passing primitive long
+    public void setEmployeeId(long employeeId) {
+        this.employeeId = String.valueOf(employeeId);
+    }
+
+    // 🔥 REQUIRED for tests passing Long object
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = String.valueOf(employeeId);
+    }
+
+    /* -------- Metrics -------- */
 
     public double getHoursLogged() {
         return hoursLogged;
